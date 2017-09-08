@@ -1,4 +1,4 @@
-### React component a plotly.js drag-and-drop chart GUI
+### React component for a plotly.js drag-and-drop chart GUI
 
 **DEMO** 👉 http://react-plotly-dnd-editor.getforge.io/
 
