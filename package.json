@@ -1,7 +1,7 @@
 {
-  "name": "create-react-library",
-  "version": "1.0.0",
-  "description": "React NPM library starter kit based on Facebook's create react app",
+  "name": "react-plotly-dnd-editor",
+  "version": "0.4.0",
+  "description": "A simple, Tableau-like drag-and-drop editor for 2d plotly.js charts",
   "main": "build/index.js",
   "scripts": {
     "start": "node scripts/start.js",
@@ -102,11 +102,22 @@
     ]
   },
   "babel": {
+    "plugins": [
+      "transform-decorators-legacy"
+    ],
     "presets": [
       "react-app"
     ]
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "dependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "plotly.js": "^1.30.1",
+    "ramda": "^0.24.1",
+    "react-dnd": "^2.5.1",
+    "react-dnd-html5-backend": "^2.5.1",
+    "react-plotlyjs": "^0.4.3"
   }
 }
