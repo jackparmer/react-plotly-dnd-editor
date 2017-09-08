@@ -1,12 +1,15 @@
-### React component for a plotly.js drag-and-drop chart GUI
+## React component for a plotly.js drag-and-drop chart GUI
+
 
 **DEMO** 👉 http://react-plotly-dnd-editor.getforge.io/
 
-### Install
+
+## Install
 
 `yarn add react-plotly-dnd-editor` or `npm install react-plotly-dnd-editor`
 
-### Usage
+
+## Usage
 
 ```
 import React, { Component } from 'react';
@@ -33,7 +36,8 @@ class App extends Component {
 export default App;
 ```
 
-### Developing
+
+## Developing
 
 ```
 git clone [this repo]
