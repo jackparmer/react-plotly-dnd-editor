@@ -1,64 +1,41 @@
-# React NPM library starter kit
+### React component a plotly.js drag-and-drop chart GUI
 
-[![Build Status](https://travis-ci.org/UdiliaInc/create-react-library.svg?branch=master)](https://travis-ci.org/UdiliaInc/create-react-library)
-[![Dependencies](https://img.shields.io/david/udiliaInc/create-react-library.svg)]()
-[![Dev Dependencies](https://img.shields.io/david/dev/udiliaInc/create-react-library.svg)]()
+**DEMO** 👉 http://react-plotly-dnd-editor.getforge.io/
 
-based on Facebook's <a href="https://github.com/facebookincubator/create-react-app" target="_blank">Create react app</a>
+### Install
 
-## Converted to custom setup
+`yarn add react-plotly-dnd-editor` or `npm install react-plotly-dnd-editor`
 
-Moved all dependencies to dev dependencies because we don't need extra dependencies for our library after build, but we want all this features while developing one: 
+### Usage
 
-* Compile SCSS to css
-* React, JSX, ES6, and Flow syntax support.
-* Language extras beyond ES6 like the object spread operator.
-* A dev server that lints for common errors.
-* Import CSS and image files directly from JavaScript.
-* Autoprefixed CSS, so you don’t need `-webkit` or other prefixes.
-* A `build` script to bundle JS, CSS, and images for production.
+```
+import React, { Component } from 'react';
 
-## Getting Started
+import ChartEditor from './../lib/index.js';
 
-Clone repo
+const rows = [["5.1","3.5","1.4","0.2","setosa","1"],["4.9","3","1.4","0.2","setosa","1"],["4.7","3.2","1.3","0.2","setosa","1"],["4.6","3.1","1.5","0.2","setosa","1"],["5","3.6","1.4","0.2","setosa","1"],["5.4","3.9","1.7","0.4","setosa","1"],["4.6","3.4","1.4","0.3","setosa","1"],["5","3.4","1.5","0.2","setosa","1"],["4.4","2.9","1.4","0.2","setosa","1"],["4.9","3.1","1.5","0.1","setosa","1"],["5.4","3.7","1.5","0.2","setosa","1"],["4.8","3.4","1.6","0.2","setosa","1"],["4.8","3","1.4","0.1","setosa","1"],["4.3","3","1.1","0.1","setosa","1"],["5.8","4","1.2","0.2","setosa","1"],["5.7","4.4","1.5","0.4","setosa","1"],["5.4","3.9","1.3","0.4","setosa","1"],["5.1","3.5","1.4","0.3","setosa","1"],["5.7","3.8","1.7","0.3","setosa","1"],["5.1","3.8","1.5","0.3","setosa","1"],["5.4","3.4","1.7","0.2","setosa","1"],["5.1","3.7","1.5","0.4","setosa","1"],["4.6","3.6","1","0.2","setosa","1"],["5.1","3.3","1.7","0.5","setosa","1"],["4.8","3.4","1.9","0.2","setosa","1"],["5","3","1.6","0.2","setosa","1"],["5","3.4","1.6","0.4","setosa","1"],["5.2","3.5","1.5","0.2","setosa","1"],["5.2","3.4","1.4","0.2","setosa","1"],["4.7","3.2","1.6","0.2","setosa","1"],["4.8","3.1","1.6","0.2","setosa","1"],["5.4","3.4","1.5","0.4","setosa","1"],["5.2","4.1","1.5","0.1","setosa","1"],["5.5","4.2","1.4","0.2","setosa","1"],["4.9","3.1","1.5","0.1","setosa","1"],["5","3.2","1.2","0.2","setosa","1"],["5.5","3.5","1.3","0.2","setosa","1"],["4.9","3.1","1.5","0.1","setosa","1"],["4.4","3","1.3","0.2","setosa","1"],["5.1","3.4","1.5","0.2","setosa","1"],["5","3.5","1.3","0.3","setosa","1"],["4.5","2.3","1.3","0.3","setosa","1"],["4.4","3.2","1.3","0.2","setosa","1"],["5","3.5","1.6","0.6","setosa","1"],["5.1","3.8","1.9","0.4","setosa","1"],["4.8","3","1.4","0.3","setosa","1"],["5.1","3.8","1.6","0.2","setosa","1"],["4.6","3.2","1.4","0.2","setosa","1"],["5.3","3.7","1.5","0.2","setosa","1"],["5","3.3","1.4","0.2","setosa","1"],["7","3.2","4.7","1.4","versicolor","2"],["6.4","3.2","4.5","1.5","versicolor","2"],["6.9","3.1","4.9","1.5","versicolor","2"],["5.5","2.3","4","1.3","versicolor","2"],["6.5","2.8","4.6","1.5","versicolor","2"],["5.7","2.8","4.5","1.3","versicolor","2"],["6.3","3.3","4.7","1.6","versicolor","2"],["4.9","2.4","3.3","1","versicolor","2"],["6.6","2.9","4.6","1.3","versicolor","2"],["5.2","2.7","3.9","1.4","versicolor","2"],["5","2","3.5","1","versicolor","2"],["5.9","3","4.2","1.5","versicolor","2"],["6","2.2","4","1","versicolor","2"],["6.1","2.9","4.7","1.4","versicolor","2"],["5.6","2.9","3.6","1.3","versicolor","2"],["6.7","3.1","4.4","1.4","versicolor","2"],["5.6","3","4.5","1.5","versicolor","2"],["5.8","2.7","4.1","1","versicolor","2"],["6.2","2.2","4.5","1.5","versicolor","2"],["5.6","2.5","3.9","1.1","versicolor","2"],["5.9","3.2","4.8","1.8","versicolor","2"],["6.1","2.8","4","1.3","versicolor","2"],["6.3","2.5","4.9","1.5","versicolor","2"],["6.1","2.8","4.7","1.2","versicolor","2"],["6.4","2.9","4.3","1.3","versicolor","2"],["6.6","3","4.4","1.4","versicolor","2"],["6.8","2.8","4.8","1.4","versicolor","2"],["6.7","3","5","1.7","versicolor","2"],["6","2.9","4.5","1.5","versicolor","2"],["5.7","2.6","3.5","1","versicolor","2"],["5.5","2.4","3.8","1.1","versicolor","2"],["5.5","2.4","3.7","1","versicolor","2"],["5.8","2.7","3.9","1.2","versicolor","2"],["6","2.7","5.1","1.6","versicolor","2"],["5.4","3","4.5","1.5","versicolor","2"],["6","3.4","4.5","1.6","versicolor","2"],["6.7","3.1","4.7","1.5","versicolor","2"],["6.3","2.3","4.4","1.3","versicolor","2"],["5.6","3","4.1","1.3","versicolor","2"],["5.5","2.5","4","1.3","versicolor","2"],["5.5","2.6","4.4","1.2","versicolor","2"],["6.1","3","4.6","1.4","versicolor","2"],["5.8","2.6","4","1.2","versicolor","2"],["5","2.3","3.3","1","versicolor","2"],["5.6","2.7","4.2","1.3","versicolor","2"],["5.7","3","4.2","1.2","versicolor","2"],["5.7","2.9","4.2","1.3","versicolor","2"],["6.2","2.9","4.3","1.3","versicolor","2"],["5.1","2.5","3","1.1","versicolor","2"],["5.7","2.8","4.1","1.3","versicolor","2"],["6.3","3.3","6","2.5","virginica","3"],["5.8","2.7","5.1","1.9","virginica","3"],["7.1","3","5.9","2.1","virginica","3"],["6.3","2.9","5.6","1.8","virginica","3"],["6.5","3","5.8","2.2","virginica","3"],["7.6","3","6.6","2.1","virginica","3"],["4.9","2.5","4.5","1.7","virginica","3"],["7.3","2.9","6.3","1.8","virginica","3"],["6.7","2.5","5.8","1.8","virginica","3"],["7.2","3.6","6.1","2.5","virginica","3"],["6.5","3.2","5.1","2","virginica","3"],["6.4","2.7","5.3","1.9","virginica","3"],["6.8","3","5.5","2.1","virginica","3"],["5.7","2.5","5","2","virginica","3"],["5.8","2.8","5.1","2.4","virginica","3"],["6.4","3.2","5.3","2.3","virginica","3"],["6.5","3","5.5","1.8","virginica","3"],["7.7","3.8","6.7","2.2","virginica","3"],["7.7","2.6","6.9","2.3","virginica","3"],["6","2.2","5","1.5","virginica","3"],["6.9","3.2","5.7","2.3","virginica","3"],["5.6","2.8","4.9","2","virginica","3"],["7.7","2.8","6.7","2","virginica","3"],["6.3","2.7","4.9","1.8","virginica","3"],["6.7","3.3","5.7","2.1","virginica","3"],["7.2","3.2","6","1.8","virginica","3"],["6.2","2.8","4.8","1.8","virginica","3"],["6.1","3","4.9","1.8","virginica","3"],["6.4","2.8","5.6","2.1","virginica","3"],["7.2","3","5.8","1.6","virginica","3"],["7.4","2.8","6.1","1.9","virginica","3"],["7.9","3.8","6.4","2","virginica","3"],["6.4","2.8","5.6","2.2","virginica","3"],["6.3","2.8","5.1","1.5","virginica","3"],["6.1","2.6","5.6","1.4","virginica","3"],["7.7","3","6.1","2.3","virginica","3"],["6.3","3.4","5.6","2.4","virginica","3"],["6.4","3.1","5.5","1.8","virginica","3"],["6","3","4.8","1.8","virginica","3"],["6.9","3.1","5.4","2.1","virginica","3"],["6.7","3.1","5.6","2.4","virginica","3"],["6.9","3.1","5.1","2.3","virginica","3"],["5.8","2.7","5.1","1.9","virginica","3"],["6.8","3.2","5.9","2.3","virginica","3"],["6.7","3.3","5.7","2.5","virginica","3"],["6.7","3","5.2","2.3","virginica","3"],["6.3","2.5","5","1.9","virginica","3"],["6.5","3","5.2","2","virginica","3"],["6.2","3.4","5.4","2.3","virginica","3"],["5.9","3","5.1","1.8","virginica","3"]]
 
-````
-git clone https://github.com/udiliaInc/create-react-library.git
-````
+const columnNames = ["sepal_length","sepal_width","petal_length","petal_width","species","species_id"];
 
-Install dependencies
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <ChartEditor
+                    rows={rows}
+                    columnNames={columnNames}
+                />
+            </div>
+        );
+    }
+}
 
-`npm install` or `yarn install`
+export default App;
+```
 
-Start development server
+### Developing
 
-`npm start` or `yarn start`
-
-Runs the demo app in development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-## Library files
-
-All library files are located inside `src/lib`  
-
-## Demo app
-
-Is located inside `src/demo` directory, here you can test your library while developing
-
-## Testing
-
-`npm run test` or `yarn run test`
-
-## Build library
-
-`npm run build` or `yarn run build`
-
-Produces production version of library under the `build` folder.
-
-## Publish library
-
-`npm publish`
-
-## Example library built with this starter kit
-
-https://github.com/UdiliaInc/react-under-construction
+```
+git clone [this repo]
+yarn start
+```
