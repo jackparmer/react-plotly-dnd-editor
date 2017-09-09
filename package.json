@@ -10,13 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/udiliaInc/create-react-library.git"
+    "url": "git+https://github.com/jackparmer/react-plotly-dnd-editor.git"
   },
-  "author": "Dimitri Mikadze <dimitri@udilia.com>",
+  "author": "Jack Parmer",
   "bugs": {
-    "url": "https://github.com/udiliaInc/create-react-library/issues"
+    "url": "https://github.com/jackparmer/react-plotly-dnd-editor"
   },
-  "homepage": "https://github.com/udiliaInc/create-react-library#readme",
+  "homepage": "https://github.com/jackparmer/react-plotly-dnd-editor",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "7.1.2",
