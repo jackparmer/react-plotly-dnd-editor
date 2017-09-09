@@ -50,10 +50,10 @@ export const PLOT_TYPES = [
     {label: 'Box Plot', value: 'box'},
     {label: 'Candlestick Plot', value: 'candlestick'},    
     {label: 'OHLC Plot', value: 'ohlc'},        
-    {label: 'US: x=lat, y=lon', value: 'scattergeo-usa'},
-    {label: 'World: x=lat, y=lon', value: 'scattergeo-world'},    
-    {label: 'US: x=state, y=value', value: 'choropleth-usa'},
-    {label: 'World: x=country, y=value', value: 'choroleth-world'},            
+    {label: 'US [x=lat, y=lon]', value: 'scattergeo-usa'},
+    {label: 'World [x=lat, y=lon]', value: 'scattergeo-world'},    
+    {label: 'US [x=state, y=value]', value: 'choropleth-usa'},
+    {label: 'World [x=country, y=value]', value: 'choroleth-world'},            
 ];
 
 export const DEFAULT_DATA = [{x:[1,2,3,4], y:[1,4,9,16]}];

@@ -38,11 +38,7 @@ export default class ChartEditor extends Component {
     }
 
     componentDidMount() {
-
-        // new props will rerender plot component but not drop zone components
-        // force a full redraw so axis drop zone components update
-        // when new data is passed to ChartEditor
-        this.forceUpdate();
+        this.setState(this.state);
     }
 
     componentShouldUpdate(nextProps, nextState) {
