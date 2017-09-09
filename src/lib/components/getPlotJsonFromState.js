@@ -1,7 +1,3 @@
-/*
-*  copyright Jack Parmer 2017
-*  MIT licensed
-*/
 
 import {transpose} from 'ramda';
 import {DEFAULT_DATA, DEFAULT_LAYOUT, DEFAULT_COLORS} from './editorConstants';
@@ -53,11 +49,40 @@ export default function getPlotJsonFromState(state, props) {
 
             dataObj = {x: xColumnData, y: yColumnData, marker: {color: traceColor}};
 
-            if (traceType === 'choropleth' || traceType === 'scattergeo') {
+            if (traceType === 'scattergeo-usa' || traceType === 'scattergeo-world') {
                 delete dataObj.x;
                 delete dataObj.y;
-                dataObj = {lat: xColumnData, lon: yColumnData};
+                dataObj = {
+                    lat: xColumnData, 
+                    lon: yColumnData,
+                    type: 'scattergeo'
+                };
             }
+            else if (traceType === 'choropleth-usa') {
+                delete dataObj.x;
+                delete dataObj.y;
+                dataObj = {
+                    locations: xColumnData, 
+                    z: yColumnData,
+                    type: 'choropleth',
+                    colorscale: [[0, 'rgb(242,240,247)'], [0.2, 'rgb(218,218,235)'],
+                        [0.4, 'rgb(188,189,220)'], [0.6, 'rgb(158,154,200)'],
+                        [0.8, 'rgb(117,107,177)'], [1, 'rgb(84,39,143)']]
+                };   
+            }
+            else if (traceType === 'choropleth-world') { 
+                delete dataObj.x;
+                delete dataObj.y;
+                dataObj = {
+                    locations: xColumnData, 
+                    z: yColumnData,
+                    type: 'choropleth',
+                    locationmode: 'USA-states',
+                    colorscale: [[0,'rgb(5, 10, 172)'],[0.35,'rgb(40, 60, 190)'],
+                        [0.5,'rgb(70, 100, 245)'], [0.6,'rgb(90, 120, 245)'],
+                        [0.7,'rgb(106, 137, 247)'],[1,'rgb(220, 220, 220)']]
+                };   
+            }                       
             else if (traceType === 'pie') {
                 delete dataObj.x;
                 delete dataObj.y;
@@ -99,6 +124,11 @@ export default function getPlotJsonFromState(state, props) {
                 layout['xaxis']['showticklabels'] = false;
                 layout['xaxis']['title'] = ' ';
             }
+        }
+
+        if (traceType === 'choropleth-us' || traceType === 'scattergeo-usa') {
+            layout['geo'] = {};
+            layout['geo']['scope'] = 'usa';
         }
     }
 

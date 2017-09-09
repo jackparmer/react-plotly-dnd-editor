@@ -37,6 +37,23 @@ export default class ChartEditor extends Component {
         };
     }
 
+    componentDidMount() {
+
+        // new props will rerender plot component but not drop zone components
+        // force a full redraw so axis drop zone components update
+        // when new data is passed to ChartEditor
+        this.forceUpdate();
+    }
+
+    componentShouldUpdate(nextProps, nextState) {
+        if( this.props.columnNames === nextProps.columnNames &&
+            this.props.rows.length === nextProps.rows.length ) {
+            return false;
+        }
+
+        return true;
+    }
+
     isDropped(boxName) {
         return this.state.droppedBoxNames.indexOf(boxName) > -1;
     }
