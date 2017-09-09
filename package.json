@@ -1,6 +1,6 @@
 {
   "name": "react-plotly-dnd-editor",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "A simple, Tableau-like drag-and-drop editor for 2d plotly.js charts",
   "main": "build/index.js",
   "scripts": {
