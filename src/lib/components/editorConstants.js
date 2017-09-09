@@ -12,11 +12,22 @@ export const controlPanelStyle = {
     borderRadius: '6px'
 }
 
-export const columnLabelStyle = {
-    fontWeight: 300,
+export const columnSelectLabelStyle = {
+    fontWeight: '300',
     fontSize: '14px',
+    display: 'inline',
+    marginRight: '10px',
+    width: 'auto'
+}
+
+export const dropdownContainerStyle = {
+    marginBottom: '10px',
+    height: '30px'
+}
+
+export const selectDropdownStyle = {
     display: 'inline-block',
-    marginRight: '10px'
+    outline: 'none'
 }
 
 export const submitStyle = {
@@ -25,7 +36,8 @@ export const submitStyle = {
     cursor: 'pointer',
     border: '1px solid #c8d4e3',
     fontSize: '12px',
-    width: '100%'
+    width: '100%',
+    float: 'right'
 }
 
 export const PLOT_TYPES = [

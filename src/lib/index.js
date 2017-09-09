@@ -9,7 +9,8 @@ import AxisDropZone from './components/AxisDropZone.react.js';
 import Box from './components/Box.react.js';
 
 import getPlotJsonFromState from './components/getPlotJsonFromState.js'
-import {PLOT_TYPES, controlPanelStyle, columnLabelStyle, submitStyle} from './components/editorConstants';
+import {PLOT_TYPES, controlPanelStyle, columnSelectLabelStyle, 
+        dropdownContainerStyle, selectDropdownStyle, submitStyle} from './components/editorConstants';
 
 
 @DragDropContext(HTML5Backend)
@@ -53,11 +54,11 @@ export default class ChartEditor extends Component {
         return (
             <div style={{fontFamily:'Open Sans, Sans-Serif'}}>
                 <div style={controlPanelStyle}>
-                    <div style={{marginBottom:'10px'}}>
-                        <label style={columnLabelStyle}>{columnLabel}</label>
+                    <div style={dropdownContainerStyle}>
+                        <div style={columnSelectLabelStyle}>{columnLabel}</div>
                         <select 
                             onChange={this.handleSelect}
-                            style={{display:'inline-block', outline:'none'}}
+                            style={selectDropdownStyle}
                             value={selectedChartType}
                         >
                             {PLOT_TYPES.map((opt, i) =>
@@ -69,7 +70,7 @@ export default class ChartEditor extends Component {
                             method='post'
                             target='_blank'
                             name='data'
-                            style={{display:'inline-block', margin:'0 10px'}}
+                            style={{float: 'right'}}
                         >
                             <input type='hidden' name='data' value={JSON.stringify(plotJSON)} />
                             <input 
