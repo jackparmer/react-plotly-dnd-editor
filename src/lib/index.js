@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import update from 'react/lib/update';
 import createPlotlyComponent from 'react-plotlyjs';
-import Plotly from 'plotly.js/dist/plotly-cartesian';
+import Plotly from 'plotly.js/dist/plotly.min.js';
 
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
@@ -14,7 +14,7 @@ import {PLOT_TYPES, controlPanelStyle, columnSelectLabelStyle,
 
 
 @DragDropContext(HTML5Backend)
-export default class ChartEditor extends Component {
+export default class ChartEditor extends PureComponent {
 
     constructor(props) {
         super(props);
@@ -34,6 +34,8 @@ export default class ChartEditor extends Component {
             droppedBoxNames: [],
             selectedColumn: '',
             selectedChartType: 'scatter',
+            columnNames: props.columnNames,
+            rows: props.rows
         };
     }
 
@@ -41,9 +43,28 @@ export default class ChartEditor extends Component {
         this.setState(this.state);
     }
 
-    componentShouldUpdate(nextProps, nextState) {
-        if( this.props.columnNames === nextProps.columnNames &&
-            this.props.rows.length === nextProps.rows.length ) {
+    componentWillReceiveProps(nextProps) {
+
+        let columnTraceTypes = [];
+        nextProps.columnNames.map(colName => (columnTraceTypes[colName] = 'scatter'));
+
+        if ( nextProps.columnNames !== this.state.columnNames ) {
+            this.setState({
+                xAxisColumnName: nextProps.columnNames[0],
+                yAxisColumnNames: [nextProps.columnNames[1]],
+                boxes: nextProps.columnNames.map(colName => ({name: colName, type: 'column'})),
+                columnTraceTypes: columnTraceTypes,          
+                droppedBoxNames: [],
+                selectedColumn: '',
+                selectedChartType: 'scatter',
+                columnNames: nextProps.columnNames,
+                rows: nextProps.rows
+            });
+        }
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if( JSON.stringify(this.state) === JSON.stringify(nextState) ) {
             return false;
         }
 
@@ -62,7 +83,7 @@ export default class ChartEditor extends Component {
             'Select a chart type for ' + selectedColumn : 
             'Select a chart type';
 
-        const plotJSON = getPlotJsonFromState(this.state, this.props);
+        const plotJSON = getPlotJsonFromState(this.state);
 
         return (
             <div style={{fontFamily:'Open Sans, Sans-Serif'}}>
@@ -190,7 +211,6 @@ export default class ChartEditor extends Component {
     }
 
     handleDrop(item, axisType) {
-        console.log(axisType);
         const { name } = item;
 
         if (axisType === 'xaxis') {
